@@ -5,4 +5,4 @@ app.setup({
 });
 
 require('./functions/dbModifiers/insertSensor');
-
+require('./functions/dbModifiers/postStatus');
