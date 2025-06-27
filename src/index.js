@@ -4,7 +4,8 @@ app.setup({
     enableHttpStream: true,
 });
 
-require('./functions/dbModifiers/insertSensor');
+require('./functions/dbModifiers/addSensor');
 require('./functions/dbModifiers/postStatus');
 require('./functions/dbModifiers/addClient');
 require('./functions/dbModifiers/addParking');
+require('./functions/dbModifiers/addLevel');

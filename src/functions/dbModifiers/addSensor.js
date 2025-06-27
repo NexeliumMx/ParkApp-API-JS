@@ -6,7 +6,7 @@
  * It expects a JSON body with sensor details.
  *
  * Example:
- * curl -i -X POST "http://localhost:7071/api/insertSensor" -H "Content-Type: application/json" -d '{"sensor_id":"123","location":"A1","type":"temperature"}'
+ * curl -i -X POST "http://localhost:7071/api/addSensor" -H "Content-Type: application/json" -d '{"sensor_id":"123","location":"A1","type":"temperature"}'
  *
  * Expected Response:
  * {"success":true,"message":"Sensor inserted successfully"}
@@ -15,7 +15,7 @@
 const { app } = require('@azure/functions');
 const { getClient } = require('../dbClient');
 
-app.http('insertSensor', {
+app.http('addSensor', {
     methods: ['POST'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
@@ -69,12 +69,12 @@ app.http('insertSensor', {
 
             const res = await client.query(insertQuery, values);
 
-            context.log("Sensor inserted successfully:", res.rows[0].sensorid);
+            context.log("Sensor added successfully:", res.rows[0].sensor_id);
 
             return {
                 status: 201,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ success: true, message: 'Sensor inserted successfully', sensorID: res.rows[0].sensorid })
+                body: JSON.stringify({ success: true, message: 'Sensor added successfully', sensorID: res.rows[0].sensor_id })
             };
         } catch (error) {
             context.log.error("Error during sensor insert operation:", error);
