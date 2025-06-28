@@ -11,3 +11,4 @@ require('./functions/dbModifiers/addParking');
 require('./functions/dbModifiers/addLevel');
 require('./functions/dbModifiers/addUser');
 require('./functions/dbModifiers/grantPermission');
+require('./functions/dbModifiers/updateFlags');
