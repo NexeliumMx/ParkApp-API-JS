@@ -1,12 +1,14 @@
 /*
-
+nuevo usuario en la base de datos.
+Genera un UUID para el user_id, valida que el client_id exista en la tabla clients, inserta el usuario en la tabla users y luego incrementa el contador no_users del cliente correspondiente.
+Devuelve los datos básicos del usuario creado o un error si ocurre algún problema.
 
 curl -i -X POST "http://localhost:7071/api/addUser" \
 -H "Content-Type: application/json" \
 -d '{
-  "username": "usuario1",
-  "password": "clave123",
-  "client_id": "your-client-uuid"
+  "username": "usuario",
+  "password": "clave",
+  "client_id": "existing-client-uuid"
 }'
 */
 const { app } = require('@azure/functions');
