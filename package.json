@@ -9,7 +9,7 @@
   "dependencies": {
     "@azure/functions": "^4.0.0",
     "@azure/identity": "^4.10.1",
-    "pg": "^8.16.2"
+    "pg": "^8.16.3"
   },
   "main": "src/{index.js,functions/*.js}"
 }
