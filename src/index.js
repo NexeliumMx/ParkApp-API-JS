@@ -13,3 +13,5 @@ require('./functions/dbModifiers/addUser');
 require('./functions/dbModifiers/grantPermission');
 require('./functions/dbModifiers/updateFlags');
 require('./functions/dbModifiers/updateMaintenance');
+
+require('./functions/dbFetchers/getGeneralInfo');

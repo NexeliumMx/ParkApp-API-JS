@@ -1,8 +1,8 @@
 
 const { app } = require('@azure/functions');
-const { getClient } = require('./dbClient');
+const { getClient } = require('../dbClient');
 
-app.http('fetchSensorInfo', {
+app.http('fetchGeneralInfo', {
     methods: ['GET'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
@@ -26,21 +26,28 @@ app.http('fetchSensorInfo', {
 
             // Query to fetch sensor Info by user access
             const query = `
-                SELECT 
-                    s.sensor_id,
+                SELECT
+                    p.complex,
+                    p.parking_alias,
                     s.parking_id,
-                    s.floor, 
-                    s.current_state, 
-                    p.parking_alias, 
-                    p.complex
+                    s.floor,
+                    l.floor_alias,
+                    COUNT(*) AS capacity,
+                    COUNT(*) FILTER (WHERE s.current_state = true) AS occupied
                 FROM 
                     sensor_info s
                 JOIN 
-                    parking p ON s.parking_id = p.parking_id
-                JOIN 
                     permissions i ON s.parking_id = i.parking_id
+                JOIN
+                    parking p ON s.parking_id = p.parking_id 
+                JOIN
+                    levels l ON s.parking_id = l.parking_id AND s.floor = l.floor
                 WHERE 
-                    i.user_id = $1;
+                    i.user_id = $1
+                GROUP BY 
+                    p.complex, p.parking_alias, s.parking_id, s.floor, l.floor_alias
+                ORDER BY 
+                    s.parking_id, s.floor;
             `;
             const values = [userId];
             context.log(`Executing query: ${query} with values: ${values}`);
