@@ -104,6 +104,12 @@ app.http('postStatus', {
             ];
             const insertRes = await client.query(insertQuery, insertValues);
 
+            // Update current_state in sensor_info
+            await client.query(
+                `UPDATE public.sensor_info SET current_state = $1 WHERE sensor_id = $2`,
+                [payload.state, sensorId]
+            );
+
             client.release();
 
             context.log('Status registered:', insertRes.rows[0]);
