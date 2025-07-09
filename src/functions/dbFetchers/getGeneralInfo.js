@@ -2,7 +2,7 @@
 const { app } = require('@azure/functions');
 const { getClient } = require('../dbClient');
 
-app.http('fetchGeneralInfo', {
+app.http('getGeneralInfo', {
     methods: ['GET'],
     authLevel: 'anonymous',
     handler: async (request, context) => {

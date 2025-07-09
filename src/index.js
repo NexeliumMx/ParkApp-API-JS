@@ -15,3 +15,7 @@ require('./functions/dbModifiers/updateFlags');
 require('./functions/dbModifiers/updateMaintenance');
 
 require('./functions/dbFetchers/getGeneralInfo');
+require('./functions/dbFetchers/getLevelsByUser');
+require('./functions/dbFetchers/getSensorsByLevel');
+require('./functions/dbFetchers/getValidDates');
+require('./functions/dbFetchers/getSensorsByUser');
