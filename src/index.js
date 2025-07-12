@@ -19,3 +19,5 @@ require('./functions/dbFetchers/getLevelsByUser');
 require('./functions/dbFetchers/getSensorsByLevel');
 require('./functions/dbFetchers/getValidDates');
 require('./functions/dbFetchers/getSensorsByUser');
+
+require('./functions/dbFetchers/getAnalysis');
