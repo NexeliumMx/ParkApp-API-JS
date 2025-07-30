@@ -21,3 +21,4 @@ require('./functions/dbFetchers/getValidDates');
 require('./functions/dbFetchers/getSensorsByUser');
 
 require('./functions/dbFetchers/getAnalysis');
+require('./functions/dbFetchers/getStatsByDateBucket');
