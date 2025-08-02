@@ -22,3 +22,4 @@ require('./functions/dbFetchers/getSensorsByUser');
 
 require('./functions/dbFetchers/getAnalysis');
 require('./functions/dbFetchers/getStatsByDateBucket');
+require('./functions/dbFetchers/pernocte');
