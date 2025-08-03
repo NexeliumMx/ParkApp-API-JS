@@ -41,6 +41,8 @@ app.http('pernocte', {
                     e.sensor_id,
                     s.sensor_alias,
                     p.parking_alias,
+                    p.complex,
+                    ls.floor_alias,
                     s.parking_id,
                     e.entry_time,
                     l.last_status_time,
@@ -52,6 +54,7 @@ app.http('pernocte', {
                   JOIN latest l ON e.sensor_id = l.sensor_id
                   JOIN sensor_info s ON e.sensor_id = s.sensor_id
                   JOIN parking p ON s.parking_id = p.parking_id
+                  JOIN levels ls ON s.floor = ls.floor AND s.parking_id = ls.parking_id
                   JOIN permissions perm ON p.parking_id = perm.parking_id
                   WHERE perm.user_id = $1
                 )
@@ -60,6 +63,8 @@ app.http('pernocte', {
                   parking_id,
                   sensor_alias,
                   parking_alias,
+                  complex,
+                  floor_alias,
                   entry_time,
                   last_status_time,
                   duration_parked,
