@@ -13,6 +13,8 @@ require('./functions/dbModifiers/addUser');
 require('./functions/dbModifiers/grantPermission');
 require('./functions/dbModifiers/updateFlags');
 require('./functions/dbModifiers/updateMaintenance');
+require('./functions/dbModifiers/updateAlias');
+
 
 require('./functions/dbFetchers/getGeneralInfo');
 require('./functions/dbFetchers/getLevelsByUser');
