@@ -26,3 +26,6 @@ require('./functions/dbFetchers/getAnalysis');
 require('./functions/dbFetchers/getStatsByDateBucket');
 require('./functions/dbFetchers/pernocte');
 require('./functions/dbFetchers/info');
+
+require('./functions/dbFetchers/getKonvaInfo');
+require('./functions/dbFetchers/getMapInfo');
