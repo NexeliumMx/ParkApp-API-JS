@@ -71,7 +71,12 @@ app.http('postStatus', {
         `;
 
         try {
+
+            context.log('Connecting to the database...');
+
             const client = await getClient();
+
+            context.log('Full database client object:', JSON.stringify(client, null, 2));
 
             context.log('Looking for sensor_id:', sensorId);
 
@@ -88,6 +93,8 @@ app.http('postStatus', {
             }
 
             const { schema } = schemaRes.rows[0];
+
+            
 
             // Insert status into the corresponding schema table
             const insertQuery = `
